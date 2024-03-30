@@ -5,7 +5,9 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   name: 's3-cdk-assets-bootstrap',
   projenrcTs: true,
 
-  // deps: [],                /* Runtime dependencies of this module. */
+  deps: [
+    'aws-cdk-github-oidc@v2.4.1',
+  ], /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */

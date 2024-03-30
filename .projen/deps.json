@@ -67,6 +67,11 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-github-oidc",
+      "version": "v2.4.1",
+      "type": "runtime"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.1.0",
       "type": "runtime"
