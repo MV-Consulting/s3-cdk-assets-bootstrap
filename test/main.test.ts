@@ -1,10 +1,11 @@
 import { App } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
-import { MyStack } from '../src/main';
+import { DistributionStack } from '../src/stacks/DistributionStack';
 
 test('Snapshot', () => {
   const app = new App();
-  const stack = new MyStack(app, 'test', {
+
+  const distributionStack = new DistributionStack(app, 'test', {
     stage: 'dev',
     githubRepoProps: [
       {
@@ -15,15 +16,11 @@ test('Snapshot', () => {
         releaseObjectKeysPattern: 'releaseObjectKeysPattern',
       },
     ],
-    assetBucketProps: {
-      regions: ['eu-west-1', 'eu-central-1'],
-      prefix: 'prefix',
-    },
     releaseBucketProps: {
       prefix: 'prefix',
     },
   });
 
-  const template = Template.fromStack(stack);
-  expect(template.toJSON()).toMatchSnapshot();
+  const templateDistribution = Template.fromStack(distributionStack);
+  expect(templateDistribution.toJSON()).toMatchSnapshot();
 });
