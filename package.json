@@ -38,7 +38,7 @@
     "projen": "^0.82.8",
     "ts-jest": "^29.1.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "aws-cdk-github-oidc": "v2.4.1",
