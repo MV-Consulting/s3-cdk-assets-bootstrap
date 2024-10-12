@@ -1,5 +1,6 @@
 {
   "name": "s3-cdk-assets-bootstrap",
+  "description": "A CDK app that creates your public S3 buckets in all regions.",
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",
