@@ -24,55 +24,55 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     secret: 'PROJEN_GITHUB_TOKEN',
   },
   dependabot: true,
-      dependabotOptions: {
-        scheduleInterval: DependabotScheduleInterval.WEEKLY,
-        labels: ['dependencies', 'auto-approve'],
-        groups: {
-          default: {
-            patterns: ['*'],
-            excludePatterns: ['aws-cdk*', 'projen'],
-          },
-        },
-        ignore: [{ dependencyName: 'aws-cdk-lib' }, { dependencyName: 'aws-cdk' }],
+  dependabotOptions: {
+    scheduleInterval: DependabotScheduleInterval.WEEKLY,
+    labels: ['dependencies', 'auto-approve'],
+    groups: {
+      default: {
+        patterns: ['*'],
+        excludePatterns: ['aws-cdk*', 'projen'],
       },
-      // // See https://github.com/projen/projen/discussions/4040#discussioncomment-11905628
-      releasableCommits: ReleasableCommits.ofType([
-        'feat',
-        'fix',
-        'chore',
-        'refactor',
-        'perf',
-      ]),
-      githubOptions: {
-        pullRequestLintOptions: {
-          semanticTitleOptions: {
-            // see commit types here: https://www.conventionalcommits.org/en/v1.0.0/#summary
-            types: [
-              'feat',
-              'fix',
-              'chore',
-              'refactor',
-              'perf',
-              'docs',
-              'style',
-              'test',
-              'build',
-              'ci',
-            ],
-          },
-        },
-      },
-      versionrcOptions: {
+    },
+    ignore: [{ dependencyName: 'aws-cdk-lib' }, { dependencyName: 'aws-cdk' }],
+  },
+  // // See https://github.com/projen/projen/discussions/4040#discussioncomment-11905628
+  releasableCommits: ReleasableCommits.ofType([
+    'feat',
+    'fix',
+    'chore',
+    'refactor',
+    'perf',
+  ]),
+  githubOptions: {
+    pullRequestLintOptions: {
+      semanticTitleOptions: {
+        // see commit types here: https://www.conventionalcommits.org/en/v1.0.0/#summary
         types: [
-          { type: 'feat', section: 'Features' },
-          { type: 'fix', section: 'Bug Fixes' },
-          { type: 'chore', section: 'Chores' },
-          { type: 'docs', section: 'Docs' },
-          { type: 'style', hidden: true },
-          { type: 'refactor', hidden: true },
-          { type: 'perf', section: 'Performance' },
-          { type: 'test', hidden: true },
+          'feat',
+          'fix',
+          'chore',
+          'refactor',
+          'perf',
+          'docs',
+          'style',
+          'test',
+          'build',
+          'ci',
         ],
       },
+    },
+  },
+  versionrcOptions: {
+    types: [
+      { type: 'feat', section: 'Features' },
+      { type: 'fix', section: 'Bug Fixes' },
+      { type: 'chore', section: 'Chores' },
+      { type: 'docs', section: 'Docs' },
+      { type: 'style', hidden: true },
+      { type: 'refactor', hidden: true },
+      { type: 'perf', section: 'Performance' },
+      { type: 'test', hidden: true },
+    ],
+  },
 });
 project.synth();
