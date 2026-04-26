@@ -33,7 +33,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
         excludePatterns: ['aws-cdk*', 'projen'],
       },
     },
-    ignore: [{ dependencyName: 'aws-cdk-lib' }, { dependencyName: 'aws-cdk' }],
+    ignore: [{ dependencyName: 'aws-cdk-lib' }],
   },
   // // See https://github.com/projen/projen/discussions/4040#discussioncomment-11905628
   releasableCommits: ReleasableCommits.ofType([
@@ -75,4 +75,13 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     ],
   },
 });
+
+// projen's AutoMerge component hardcodes `delete_head_branch: {}` in the
+// mergify rule with no option to disable it. Strip it from the generated
+// .mergify.yml so Mergify does not delete head branches on merge.
+// see https://github.com/MV-Consulting/s3-cdk-assets-bootstrap/pull/265
+project.tryFindObjectFile('.mergify.yml')?.addDeletionOverride(
+  'pull_request_rules.0.actions.delete_head_branch',
+);
+
 project.synth();
